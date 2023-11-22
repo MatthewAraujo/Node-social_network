@@ -24,7 +24,7 @@ export async function createPost(request: FastifyRequest, reply: FastifyReply) {
     }
     throw err;
   }
-
   return reply.status(201).send();
+
 
 }

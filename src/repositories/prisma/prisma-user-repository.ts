@@ -34,11 +34,22 @@ export class PrismaUsersRepository implements UsersRepository {
   async findPostsByUserId(userId: string) {
     const posts = await prisma.post.findMany({
       where: {
-        authorId: userId,
+        userId,
       },
     });
 
     return posts;
   }
- 
+
+  async update(id: string, data: Prisma.PostUpdateInput) {
+    const post = await prisma.user.update({
+      where: {
+        id,
+      },
+      data,
+    });
+
+    return post;
+  }
+
 }

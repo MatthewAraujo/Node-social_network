@@ -20,4 +20,31 @@ export class PrismaPostRepository implements PostsRepository {
 
     return post;
   }
+
+  async getAllPosts() {
+    const posts = await prisma.post.findMany();
+
+    return posts;
+  }
+
+  async update(id: string, data: Prisma.PostUpdateInput) {
+    const post = await prisma.post.update({
+      where: {
+        id,
+      },
+      data,
+    });
+
+    return post;
+  }
+
+  async findPostsByUserId(userId: string) {
+    const posts = await prisma.post.findMany({
+      where: {
+        userId,
+      },
+    });
+
+    return posts;
+  }
 }
