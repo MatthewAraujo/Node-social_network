@@ -11,19 +11,19 @@ export async function login(request: FastifyRequest, reply: FastifyReply) {
 
   const { email, password } = loginBodySchema.parse(request.body);
 
-  try {
-    const loginUseCase = makeLoginUseCase();
+  try { 
+    const loginUseCase = makeLoginUseCase()
 
-    await loginUseCase.execute({
+    loginUseCase.execute({
       email,
-      password,
+      password
     });
   } catch (err) {
     if (err instanceof UserCredentialsIncorrectError) {
       return reply.status(409).send({ message: err.message });
     }
     
-    throw err;
+    throw err
   }
   return reply.status(200).send();
 }

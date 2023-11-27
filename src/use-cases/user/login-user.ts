@@ -1,5 +1,5 @@
 import { UsersRepository } from "@/repositories/users-repository";
-import { compare, hash } from "bcryptjs";
+import { compare} from "bcryptjs";
 import { UserCredentialsIncorrectError } from "../errors/user-credentials-incorrect-error";
 
 interface LoginUseCaseRequest {
